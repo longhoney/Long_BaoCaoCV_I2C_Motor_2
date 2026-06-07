@@ -13,8 +13,9 @@ void setup() {
   // Serial.println("Đi thẳng tốc độ 100%.");
   // car_fw(100, 100);
   Serial.println("Đi thẳng tốc độ 50%.");
-  Serial.print("Speed A: "); Serial.print(speedA);
-  car_fw(50, 50);
+  // Serial.print("Speed A: "); Serial.print(speedA);
+  // car_fw(50, 50);
+  motorA_fw(127);
 }
 
 void loop() {
@@ -34,6 +35,14 @@ void L9110setup() {
   digitalWrite(PIN_IN4, LOW);
 }
 
+void motorA_fw(int speed) {
+  // speed = calculate_speed(speed);
+  // analogWrite(PIN_IN1, 0);
+  digitalWrite(PIN_IN1, LOW);
+  analogWrite(PIN_IN2, speed); // ~PWM
+}
+
+/*
 // Định nghĩa các hàm sẽ sử dụng trong chương trình
 int calculate_speed(int speed) {
   // Đảm bảo giá trị tốc độ (%) nằm trong khoảng cho phép
@@ -65,26 +74,27 @@ void car_bw(int speedA, int speedB) {
 
 void motorA_fw(int speed) {
   speed = calculate_speed(speed);
-  digitalWrite(PIN_IN1, LOW);
-  analogWrite(PIN_IN2, 255 - speed); // ~PWM
+  analogWrite(PIN_IN1, 0);
+  analogWrite(PIN_IN2, speed); // ~PWM
 }
 
 void motorA_bw(int speed) {
   speed = calculate_speed(speed);
-  digitalWrite(PIN_IN1, HIGH);
-  analogWrite(PIN_IN2, 255 - speed); // ~PWM
+  analogWrite(PIN_IN1, 255);
+  analogWrite(PIN_IN2, speed); // ~PWM
 }
 
 void motorB_fw(int speed) {
   // Xử lý giá trị tốc độ nhận được
   speed = calculate_speed(speed);
-  digitalWrite(PIN_IN4, LOW);
-  analogWrite(PIN_IN3, 255 - speed); // ~PWM
+  analogWrite(PIN_IN4, 0);
+  analogWrite(PIN_IN3, speed); // ~PWM
 }
 
 void motorB_bw(int speed) {
   // Xử lý giá trị tốc độ nhận được
   speed = calculate_speed(speed);
-  digitalWrite(PIN_IN4, LOW);
-  analogWrite(PIN_IN3, 255 - speed); // ~PWM
+  analogWrite(PIN_IN4, 255);
+  analogWrite(PIN_IN3, speed); // ~PWM
 }
+*/
