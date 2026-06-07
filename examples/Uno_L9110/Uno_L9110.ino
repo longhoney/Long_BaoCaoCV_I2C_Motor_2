@@ -11,9 +11,9 @@ void setup() {
   L9110setup();
   Serial.println("Điều khiển xe...");
   // Serial.println("Đi thẳng tốc độ 100%."); car_fw(100, 100);
-  Serial.println("Đi thẳng tốc độ 40%."); car_fw(40, 40);
+  // Serial.println("Đi thẳng tốc độ 40%."); car_fw(40, 40);
   // Serial.println("Đi thẳng tốc độ 50%."); car_fw(50, 50);
-  // Serial.println("Đi lùi tốc độ 100%."); car_bw(100, 100);
+  Serial.println("Đi lùi tốc độ 100%."); car_bw(100, 100);
   // Serial.println("Đi lùi tốc độ 40%."); car_bw(40, 40);
   // Serial.println("Đi thẳng tốc độ 0%."); car_fw(0, 0);
   // Serial.println("Đi lùi tốc độ 50%."); car_bw(50, 50);
@@ -56,15 +56,8 @@ void car_bw(int speedA, int speedB) {
 }
 
 void motorA_fw(int speed) {
-  if (speed == 100) {
-    speed = calculate_speed(speed);
-    digitalWrite(PIN_IN1, HIGH);
-  }
-  else {
-    speed = calculate_speed(speed);
-    digitalWrite(PIN_IN1, HIGH);  // gUI LENH xe di thang 100% se bị 2 chân tín hiệu cùng HIGH
-    
-  }
+  speed = calculate_speed(speed);
+  digitalWrite(PIN_IN1, HIGH);
   analogWrite(PIN_IN2, 255 - speed); // ~PWM
 
 }
@@ -77,8 +70,6 @@ void motorA_bw(int speed) {
   }
   else {
     speed = calculate_speed(speed);
-    // digitalWrite(PIN_IN1, LOW);  // gUI LENH xe di thang 100% se bị 2 chân tín hiệu cùng HIGH
-    // analogWrite(PIN_IN2, 255 - speed); // ~PWM
     digitalWrite(PIN_IN2, HIGH);
     analogWrite(PIN_IN1, 255 - speed); // ~PWM
   }
@@ -87,15 +78,21 @@ void motorA_bw(int speed) {
 void motorB_fw(int speed) {
   // Xử lý giá trị tốc độ nhận được
   speed = calculate_speed(speed);
-  digitalWrite(PIN_IN4, LOW);
-  analogWrite(PIN_IN3, speed); // ~PWM
+  digitalWrite(PIN_IN4, HIGH);
+  analogWrite(PIN_IN3, 255 - speed); // ~PWM
 }
 
 void motorB_bw(int speed) {
-  // Xử lý giá trị tốc độ nhận được
-  speed = calculate_speed(speed);
-  digitalWrite(PIN_IN4, HIGH);
-  analogWrite(PIN_IN3, 255 - speed); // ~PWM
+  if (speed == 100) {
+    speed = calculate_speed(speed);
+    digitalWrite(PIN_IN4, LOW);
+    analogWrite(PIN_IN3, speed); // ~PWM
+  }
+  else {
+    speed = calculate_speed(speed);
+    digitalWrite(PIN_IN3, HIGH);
+    analogWrite(PIN_IN4, 255 - speed); // ~PWM
+  }
 }
 
 int calculate_speed(int speed) {
