@@ -15,8 +15,8 @@ void setup() {
   // Serial.println("Đi thẳng tốc độ 100%."); car_fw(100, 100);
   // Serial.println("Đi thẳng tốc độ 95%."); car_fw(95, 95);
   // Serial.println("Đi thẳng tốc độ 50%."); car_fw(50, 50);
-  // Serial.println("Đi lùi tốc độ 100%."); car_bw(100, 100);
-  Serial.println("Đi lùi tốc độ 30%."); car_bw(30, 30);
+  Serial.println("Đi lùi tốc độ 100%."); car_bw(100, 100);
+  // Serial.println("Đi lùi tốc độ 30%."); car_bw(30, 30);
   // Serial.println("Đi thẳng tốc độ 0%."); car_fw(0, 0);
   // Serial.println("Đi lùi tốc độ 0%."); car_bw(0, 0);
 }
@@ -60,19 +60,28 @@ void car_bw(int speedA, int speedB) {
 void motorA_fw(int speed) {
   if (speed == 100) {
     speed = calculate_speed(speed);
-    digitalWrite(PIN_IN1, LOW);
+    digitalWrite(PIN_IN1, HIGH);
+    analogWrite(PIN_IN2, 255 - speed); // ~PWM
   }
   else {
     speed = calculate_speed(speed);
     digitalWrite(PIN_IN1, HIGH);  // gUI LENH xe di thang 100% se bị 2 chân tín hiệu cùng HIGH
+    analogWrite(PIN_IN2, speed); // ~PWM
   }
-  analogWrite(PIN_IN2, speed); // ~PWM
+  
 }
 
 void motorA_bw(int speed) {
-  speed = calculate_speed(speed);
-  digitalWrite(PIN_IN1, HIGH);
-  analogWrite(PIN_IN2, 255 - speed); // ~PWM
+  if (speed == 100) {
+    speed = calculate_speed(speed);
+    digitalWrite(PIN_IN1, LOW);
+    analogWrite(PIN_IN2, speed); // ~PWM
+  }
+  else {
+    speed = calculate_speed(speed);
+    digitalWrite(PIN_IN1, HIGH);  // gUI LENH xe di thang 100% se bị 2 chân tín hiệu cùng HIGH
+    analogWrite(PIN_IN2, speed); // ~PWM
+  }
 }
 
 void motorB_fw(int speed) {

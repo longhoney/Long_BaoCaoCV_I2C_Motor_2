@@ -102,18 +102,26 @@ void Makerlabvn_SimpleMotor_LONG::setup(
  */
 void Makerlabvn_SimpleMotor_LONG::motorA_fw(int speed)
 {
-  // Xử lý giá trị tốc độ nhận được
-  speed = calculate_speed(speed);
-  this->lastSpeedA = speed;
-  
   // Điều khiển Motor bên TRÁI quay tới
   switch (this->type)
   {
   case Makerlabvn_SimpleMotor_LONG_Type_L9110:
     /* code */
-    // digitalWrite(_pinIn1, LOW);
-    digitalWrite(_pinIn1, HIGH);
-    analogWrite(_pinIn2,  ); // ~PWM
+    if (speed == 100) {
+    // Xử lý giá trị tốc độ nhận được
+    speed = calculate_speed(speed);
+    this->lastSpeedA = speed;
+    digitalWrite(_pinIn1, LOW);
+    analogWrite(_pinIn2, speed); // ~PWM
+    }
+    else {
+      // Xử lý giá trị tốc độ nhận được
+      speed = calculate_speed(speed);
+      this->lastSpeedA = speed;
+      digitalWrite(_pinIn1, HIGH);  // gUI LENH xe di thang 100% se bị 2 chân tín hiệu cùng HIGH
+      analogWrite(_pinIn2, 255 - speed); // ~PWM
+    }
+    
     break;
   case Makerlabvn_SimpleMotor_LONG_Type_L298_6Pin:
     /* code */
@@ -143,16 +151,24 @@ void Makerlabvn_SimpleMotor_LONG::motorA_fw(int speed)
  */
 void Makerlabvn_SimpleMotor_LONG::motorB_fw(int speed)
 {
-  // Xử lý giá trị tốc độ nhận được
-  speed = calculate_speed(speed);
-  this->lastSpeedB = speed;
-
   // Điều khiển Motor bên PHẢI quay tới
   switch (this->type)
   {
   case Makerlabvn_SimpleMotor_LONG_Type_L9110:
+    if (speed == 100) {
+    // Xử lý giá trị tốc độ nhận được
+    speed = calculate_speed(speed);
+    this->lastSpeedA = speed;
     digitalWrite(_pinIn4, LOW);
     analogWrite(_pinIn3, speed); // ~PWM
+    }
+    else {
+      // Xử lý giá trị tốc độ nhận được
+      speed = calculate_speed(speed);
+      this->lastSpeedA = speed;
+      digitalWrite(_pinIn4, HIGH);  // gUI LENH xe di thang 100% se bị 2 chân tín hiệu cùng HIGH
+      analogWrite(_pinIn3, 255 - speed); // ~PWM
+    }
     break;
   case Makerlabvn_SimpleMotor_LONG_Type_L298_6Pin:
     /* code */
