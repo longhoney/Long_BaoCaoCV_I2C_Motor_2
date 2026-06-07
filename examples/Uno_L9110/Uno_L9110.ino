@@ -14,11 +14,10 @@ void setup() {
   Serial.println("Điều khiển xe...");
   // Serial.println("Đi thẳng tốc độ 100%.");
   // car_fw(100, 100);
-  // Serial.println("Đi thẳng tốc độ 50%.");
-  // car_fw(50, 50);
-  Serial.println("Đi lùi tốc độ 30%.");
-  car_bw(30, 30);
-  
+  Serial.println("Đi thẳng tốc độ 50%.");
+  car_fw(50, 50);
+  // Serial.println("Đi lùi tốc độ 30%.");
+  // car_bw(30, 30);
 }
 
 void loop() {

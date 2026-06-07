@@ -1,3 +1,4 @@
+# Dùng logic analyzer phân tích tín hiệu Uno truyền đi
 ### 1_L9110_motorA_fw-100
 Chương trình có thể đảo chiều động cơ, nhưng không thay đổi được tốc độ
 ### 2_L9110_Khongdung_Cal-speed
@@ -17,3 +18,8 @@ Tắt 2 lệnh cal_speed trong hàm car_fw và chương trình điều khiển t
 Kiểm tra thêm hàm car_bw(50, 50) thành công
 ### 9_Phan_tich_motor_bw__255-speed
 Kiểm tra hàm car_bw(30, 30) thành công. Phân tích tại sao dùng phép tính 255-speed tại chiều quay ngược chiều kim đồng hồ.
+# Dùng logic analyzer phân tích tín hiệu Uno truyền đi và tín hiệu ngõ ra tại L9110
+### 10_L9110_carBw_30_OK
+Kiểm tra hàm car_bw(30, 30) thành công. Phép tính 255-speed hoạt động tốt, cần xác định lại ngõ ra. Vì theo lý thuyết, INA có PWM thì OUTA có PWM
+### 11_L9110_carFw_50_Fail
+Lệnh car_fw(50) chưa hoạt động tốt. Chiều quay đúng nhưng chưa điều khiển được tốc độ.
