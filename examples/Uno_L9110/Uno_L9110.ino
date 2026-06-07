@@ -14,10 +14,11 @@ void setup() {
   Serial.println("Điều khiển xe...");
   // Serial.println("Đi thẳng tốc độ 100%.");
   // car_fw(100, 100);
-  Serial.println("Đi thẳng tốc độ 50%.");
-  // Serial.print("Speed A: "); Serial.print(speedA);
-  car_fw(50, 50);
-  // motorA_fw(50);
+  // Serial.println("Đi thẳng tốc độ 50%.");
+  // car_fw(50, 50);
+  Serial.println("Đi lùi tốc độ 50%.");
+  car_bw(50, 50);
+  
 }
 
 void loop() {
@@ -37,24 +38,6 @@ void L9110setup() {
   digitalWrite(PIN_IN4, LOW);
 }
 
-// void motorA_fw(int speed) {
-//   speed = calculate_speed(speed);
-//   // analogWrite(PIN_IN1, 0);
-//   digitalWrite(PIN_IN1, LOW);
-//   analogWrite(PIN_IN2, speed); // ~PWM
-// }
-
-// int calculate_speed(int speed) {
-//   // Đảm bảo giá trị tốc độ (%) nằm trong khoảng cho phép
-//   speed = constrain(speed, 0, 100);
-
-//   // Chuyển đổi giá trị tốc độ (%) sang (PWM)
-//   speed = map(speed, 0, 100, 0, 255);
-
-//   return speed;
-// }
-
-
 // Định nghĩa các hàm sẽ sử dụng trong chương trình
 
 
@@ -62,7 +45,6 @@ void car_fw(int speedA, int speedB) {
   // Xử lý giá trị tốc độ nhận được
   // speedA = calculate_speed(speedA);
   // speedB = calculate_speed(speedB);
-
   motorA_fw(speedA); // Điều khiển motor kênh A quay thuận    //phai nhap so ??%
   motorB_fw(speedB); // Điều khiển motor kênh B quay thuận
 }
@@ -71,7 +53,6 @@ void car_bw(int speedA, int speedB) {
   // Xử lý giá trị tốc độ nhận được
   // speedA = calculate_speed(speedA);
   // speedB = calculate_speed(speedB);
-
   motorA_bw(speedA); // Điều khiển motor kênh A quay ngược
   motorB_bw(speedB); // Điều khiển motor kênh B quay ngược
 }
