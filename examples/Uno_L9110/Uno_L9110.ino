@@ -5,7 +5,7 @@
 #define PIN_IN3 6 //! D6 (~) --> B-IA
 #define PIN_IN4 7 //! D7     --> B-IB
 
-int speed = 50;
+// int speed = 50;
 
 void setup() {
   // put your setup code here, to run once:
@@ -17,7 +17,7 @@ void setup() {
   Serial.println("Đi thẳng tốc độ 50%.");
   // Serial.print("Speed A: "); Serial.print(speedA);
   // car_fw(50, 50);
-  motorA_fw(speed);
+  motorA_fw(50);
 }
 
 void loop() {
@@ -38,20 +38,20 @@ void L9110setup() {
 }
 
 void motorA_fw(int speed) {
-  int speed2 = calculate_speed(speed);
+  speed = calculate_speed(speed);
   // analogWrite(PIN_IN1, 0);
   digitalWrite(PIN_IN1, LOW);
-  analogWrite(PIN_IN2, speed2); // ~PWM
+  analogWrite(PIN_IN2, speed); // ~PWM
 }
 
 int calculate_speed(int speed) {
   // Đảm bảo giá trị tốc độ (%) nằm trong khoảng cho phép
-  int speed1 = constrain(speed, 0, 100);
+  speed = constrain(speed, 0, 100);
 
   // Chuyển đổi giá trị tốc độ (%) sang (PWM)
-  int speed2 = map(speed1, 0, 100, 0, 255);
+  speed = map(speed, 0, 100, 0, 255);
 
-  return speed2;
+  return speed;
 }
 
 /*
