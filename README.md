@@ -11,4 +11,5 @@ Tiếp tục dự án từ ngày 7/6/2026
     - Đổi tên đối tượng L298 4pin -> L9110
     - Bổ sung lệnh cấu hình chân ENA, ENB dạng OUTPUT
     - Tắt 2 lệnh cal_speed(speedA, speedB) trong 2 hàm car_fw() và car_bw()
-5. Lựa chọn chương trình Slave phù hợp với chương trình Master của thư viện MKL_I2C_Motor_Driver
+5. Test lại thư viện Maklerlabvn_SimpleMotor_LONG với MKE Creator V2 + MKE Creator V1
+6. Lựa chọn chương trình Slave phù hợp với chương trình Master của thư viện MKL_I2C_Motor_Driver
