@@ -16,8 +16,8 @@ void setup() {
   // car_fw(100, 100);
   // Serial.println("Đi thẳng tốc độ 50%.");
   // car_fw(50, 50);
-  Serial.println("Đi lùi tốc độ 50%.");
-  car_bw(50, 50);
+  Serial.println("Đi lùi tốc độ 30%.");
+  car_bw(30, 30);
   
 }
 
@@ -80,7 +80,7 @@ void motorB_bw(int speed) {
   // Xử lý giá trị tốc độ nhận được
   speed = calculate_speed(speed);
   digitalWrite(PIN_IN4, HIGH);
-  analogWrite(PIN_IN3, speed); // ~PWM
+  analogWrite(PIN_IN3, 255 - speed); // ~PWM
 }
 
 int calculate_speed(int speed) {
