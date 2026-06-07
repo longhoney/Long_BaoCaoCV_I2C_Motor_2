@@ -6,21 +6,21 @@
 #include "Makerlabvn_SimpleMotor_LONG.h"
 
 // Định nghĩa chân cho L9110
-#define PIN_IN1 4 //! D4     --> A-IB
-#define PIN_IN2 5 //! D5 (~) --> A-IA
-#define PIN_IN3 6 //! D6 (~) --> B-IA
-#define PIN_IN4 7 //! D7     --> B-IB
+// #define PIN_IN1 6 //! D6   (~) --> A-IB
+// #define PIN_IN2 5 //! D5   (~) --> A-IA
+// #define PIN_IN3 10 //! D10 (~) --> B-IA
+// #define PIN_IN4 11 //! D11 (~) --> B-IB
 
 
 
 // Định nghĩa chân cho MKE-Creator // KHONOG THAY DOI TOC DO DUOC
 // Định nghĩa chân cho L298
-// #define PIN_ENA 6 //! D6 (~)
-// #define PIN_IN1 8 
-// #define PIN_IN2 9 
-// #define PIN_IN3 4 
-// #define PIN_IN4 7 
-// #define PIN_ENB 5 //! D5 (~)
+#define PIN_ENA 6 //! D6 (~)
+#define PIN_IN1 8 
+#define PIN_IN2 9 
+#define PIN_IN3 4 
+#define PIN_IN4 7 
+#define PIN_ENB 5 //! D5 (~)
 
 
 //Khai báo đối tượng d9110 thuộc class Makerlabvn_SimpleMotor
