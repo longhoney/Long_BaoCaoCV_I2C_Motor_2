@@ -60,17 +60,17 @@ void L9110setup() {
 
 void car_fw(int speedA, int speedB) {
   // Xử lý giá trị tốc độ nhận được
-  speedA = calculate_speed(speedA);
-  speedB = calculate_speed(speedB);
+  // speedA = calculate_speed(speedA);
+  // speedB = calculate_speed(speedB);
 
-  motorA_fw(speedA); // Điều khiển motor kênh A quay thuận
+  motorA_fw(speedA); // Điều khiển motor kênh A quay thuận    //phai nhap so ??%
   motorB_fw(speedB); // Điều khiển motor kênh B quay thuận
 }
 
 void car_bw(int speedA, int speedB) {
   // Xử lý giá trị tốc độ nhận được
-  speedA = calculate_speed(speedA);
-  speedB = calculate_speed(speedB);
+  // speedA = calculate_speed(speedA);
+  // speedB = calculate_speed(speedB);
 
   motorA_bw(speedA); // Điều khiển motor kênh A quay ngược
   motorB_bw(speedB); // Điều khiển motor kênh B quay ngược
