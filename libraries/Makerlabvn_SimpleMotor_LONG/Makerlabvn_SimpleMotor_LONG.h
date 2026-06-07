@@ -1,5 +1,5 @@
-#ifndef MKL_SIMPLE_MOTOR_H
-#define MKL_SIMPLE_MOTOR_H
+#ifndef Makerlabvn_SimpleMotor_LONG_H
+#define Makerlabvn_SimpleMotor_LONG_H
 
 /**
  * Quy ước:
@@ -16,23 +16,23 @@
 #include "Makerlabvn_I2C_Motor_Driver.h"
 
 enum{
-  Makerlabvn_SimpleMotor_Type_L298_6Pin,
-  Makerlabvn_SimpleMotor_Type_L298_4Pin,
-  Makerlabvn_SimpleMotor_Type_I2C,
+  Makerlabvn_SimpleMotor_LONG_Type_L298_6Pin,
+  Makerlabvn_SimpleMotor_LONG_Type_L9110,
+  Makerlabvn_SimpleMotor_LONG_Type_I2C,
 };
 
 enum{
-  Makerlabvn_SimpleMotor_State_moveFrom0,
-  Makerlabvn_SimpleMotor_State_moveFromCW,
-  Makerlabvn_SimpleMotor_State_moveFromCCW,
-  Makerlabvn_SimpleMotor_State_StopThenMoveFrom0,
+  Makerlabvn_SimpleMotor_LONG_State_moveFrom0,
+  Makerlabvn_SimpleMotor_LONG_State_moveFromCW,
+  Makerlabvn_SimpleMotor_LONG_State_moveFromCCW,
+  Makerlabvn_SimpleMotor_LONG_State_StopThenMoveFrom0,
 };
 
 /* ------------------------------------------------------------------------- */
 /*                                   CLASS                                   */
 /* ------------------------------------------------------------------------- */
 
-class Makerlabvn_SimpleMotor: public kxnTask
+class Makerlabvn_SimpleMotor_LONG: public kxnTask
 {
 private:
   uint8_t type;
@@ -42,19 +42,19 @@ private:
   Makerlabvn_I2C_Motor_Driver *i2cMotorDriver;
 public:
   /* ------------------------------- HÀM TẠO ------------------------------- */
-  Makerlabvn_SimpleMotor(){}
+  Makerlabvn_SimpleMotor_LONG(){}
   
-  Makerlabvn_SimpleMotor(
+  Makerlabvn_SimpleMotor_LONG(
       uint8_t pinIn1, uint8_t pinIn2,
       uint8_t pinIn3, uint8_t pinIn4
   );
 
-  Makerlabvn_SimpleMotor(
+  Makerlabvn_SimpleMotor_LONG(
       uint8_t pinEnA, uint8_t pinIn1, uint8_t pinIn2,
       uint8_t pinIn3, uint8_t pinIn4, uint8_t pinEnB
   );
 
-  Makerlabvn_SimpleMotor(
+  Makerlabvn_SimpleMotor_LONG(
     uint8_t paI2cAddress
   );
 
