@@ -111,8 +111,9 @@ void Makerlabvn_SimpleMotor_LONG::motorA_fw(int speed)
   {
   case Makerlabvn_SimpleMotor_LONG_Type_L9110:
     /* code */
-    digitalWrite(_pinIn1, LOW);
-    analogWrite(_pinIn2, speed); // ~PWM
+    // digitalWrite(_pinIn1, LOW);
+    digitalWrite(_pinIn1, HIGH);
+    analogWrite(_pinIn2,  ); // ~PWM
     break;
   case Makerlabvn_SimpleMotor_LONG_Type_L298_6Pin:
     /* code */
