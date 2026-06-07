@@ -1,0 +1,9 @@
+1. Link sản phẩm MKE Creator tại Hshop: https://hshop.vn/mach-makeredu-creator-arduino-uno-compatible
+2. Link sản phẩm MKE-M10 tại Hshop: https://hshop.vn/mach-dieu-khien-dong-co-mkl-m10-i2c-motor-control-module
+3. Github MKE-M10: https://github.com/makereduvn/MKE-M10-I2C-Motor-Control-Module/tree/main
+4. Github chính của MKE Creator: https://github.com/makereduvn/MakerEdu-Creator/tree/main
+5. Github MKE Creator với mBlock: https://github.com/makerlabvn/mBlock-MakerEdu-Creator
+6. Github bài học MKE Creator với mBlock: https://github.com/makereduvn/MakerEdu-Creator-Kit-for-mBlock
+=====
+7. Link sản phẩm MKE-M17 tại Hshop: https://hshop.vn/mach-dieu-khien-dong-co-mke-m17-l9110-i2c-motor-control-module
+8. Github MKE-M17: https://github.com/makereduvn/MKE-M17-L9110-I2C-Motor-Control-Module/tree/main
