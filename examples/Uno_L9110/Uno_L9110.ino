@@ -16,8 +16,8 @@ void setup() {
   // car_fw(100, 100);
   Serial.println("Đi thẳng tốc độ 50%.");
   // Serial.print("Speed A: "); Serial.print(speedA);
-  // car_fw(50, 50);
-  motorA_fw(50);
+  car_fw(50, 50);
+  // motorA_fw(50);
 }
 
 void loop() {
@@ -37,34 +37,26 @@ void L9110setup() {
   digitalWrite(PIN_IN4, LOW);
 }
 
-void motorA_fw(int speed) {
-  speed = calculate_speed(speed);
-  // analogWrite(PIN_IN1, 0);
-  digitalWrite(PIN_IN1, LOW);
-  analogWrite(PIN_IN2, speed); // ~PWM
-}
+// void motorA_fw(int speed) {
+//   speed = calculate_speed(speed);
+//   // analogWrite(PIN_IN1, 0);
+//   digitalWrite(PIN_IN1, LOW);
+//   analogWrite(PIN_IN2, speed); // ~PWM
+// }
 
-int calculate_speed(int speed) {
-  // Đảm bảo giá trị tốc độ (%) nằm trong khoảng cho phép
-  speed = constrain(speed, 0, 100);
+// int calculate_speed(int speed) {
+//   // Đảm bảo giá trị tốc độ (%) nằm trong khoảng cho phép
+//   speed = constrain(speed, 0, 100);
 
-  // Chuyển đổi giá trị tốc độ (%) sang (PWM)
-  speed = map(speed, 0, 100, 0, 255);
+//   // Chuyển đổi giá trị tốc độ (%) sang (PWM)
+//   speed = map(speed, 0, 100, 0, 255);
 
-  return speed;
-}
+//   return speed;
+// }
 
-/*
+
 // Định nghĩa các hàm sẽ sử dụng trong chương trình
-int calculate_speed(int speed) {
-  // Đảm bảo giá trị tốc độ (%) nằm trong khoảng cho phép
-  speed = constrain(speed, 0, 100);
 
-  // Chuyển đổi giá trị tốc độ (%) sang (PWM)
-  speed = map(speed, 0, 100, 0, 255);
-
-  return speed;
-}
 
 void car_fw(int speedA, int speedB) {
   // Xử lý giá trị tốc độ nhận được
@@ -86,27 +78,36 @@ void car_bw(int speedA, int speedB) {
 
 void motorA_fw(int speed) {
   speed = calculate_speed(speed);
-  analogWrite(PIN_IN1, 0);
+  digitalWrite(PIN_IN1, LOW);
   analogWrite(PIN_IN2, speed); // ~PWM
 }
 
 void motorA_bw(int speed) {
   speed = calculate_speed(speed);
-  analogWrite(PIN_IN1, 255);
-  analogWrite(PIN_IN2, speed); // ~PWM
+  digitalWrite(PIN_IN1, HIGH);
+  analogWrite(PIN_IN2, 255 - speed); // ~PWM
 }
 
 void motorB_fw(int speed) {
   // Xử lý giá trị tốc độ nhận được
   speed = calculate_speed(speed);
-  analogWrite(PIN_IN4, 0);
+  digitalWrite(PIN_IN4, LOW);
   analogWrite(PIN_IN3, speed); // ~PWM
 }
 
 void motorB_bw(int speed) {
   // Xử lý giá trị tốc độ nhận được
   speed = calculate_speed(speed);
-  analogWrite(PIN_IN4, 255);
+  digitalWrite(PIN_IN4, HIGH);
   analogWrite(PIN_IN3, speed); // ~PWM
 }
-*/
+
+int calculate_speed(int speed) {
+  // Đảm bảo giá trị tốc độ (%) nằm trong khoảng cho phép
+  speed = constrain(speed, 0, 100);
+
+  // Chuyển đổi giá trị tốc độ (%) sang (PWM)
+  speed = map(speed, 0, 100, 0, 255);
+
+  return speed;
+}
