@@ -7,3 +7,7 @@ Tiếp tục dự án từ ngày 7/6/2026
     - Ta cần viết chương trình theo đúng tính năng của MKE-M17: Slave nhận lệnh từ Master và điều khiển động cơ. Tôi dần nhận ra khi đang khảo sát kiểu truyền nhận
     - Chương trình Master truyền lệnh đã có sẵn trong thư mục chương trình mẫu của Thư viện Makerlabvn_I2C_Motor_Driver
 3. Dùng Uno điều khiển L9110: thay đổi tốc độ ở cả 2 chiều quay -> Có thể thay thế bằng mạch [MKE Creator V2](https://hshop.vn/mach-makeredu-creator-arduino-uno-compatible) để tiết kiệm thời
+4. Tạo thư viện Makerlabvn_SimpleMotor_LONG
+    - Đổi tên đối tượng L298 4pin -> L9110
+    - Bổ sung lệnh cấu hình chân ENA, ENB dạng OUTPUT
+    - Tắt 2 lệnh cal_speed(speedA, speedB) trong 2 hàm car_fw() và car_bw()
