@@ -32,8 +32,8 @@ void setup() {
   Serial.begin(115200);
   Serial.println("Start Test, input from 0 (OFF) to 8");
   Serial.println("Baud 115200, No line ending");
-  d9110.setup(PIN_IN1, PIN_IN2, PIN_IN3, PIN_IN4); //4pin
-  // d9110.setup(PIN_ENA, PIN_IN1, PIN_IN2, PIN_IN3, PIN_IN4, PIN_ENB); //6pin
+  // d9110.setup(PIN_IN1, PIN_IN2, PIN_IN3, PIN_IN4); //4pin
+  d9110.setup(PIN_ENA, PIN_IN1, PIN_IN2, PIN_IN3, PIN_IN4, PIN_ENB); //6pin
   // d9110.setup(64); // For I2C
 }
 

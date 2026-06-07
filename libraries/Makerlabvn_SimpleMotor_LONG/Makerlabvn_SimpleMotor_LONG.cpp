@@ -103,6 +103,7 @@ void Makerlabvn_SimpleMotor_LONG::setup(
 void Makerlabvn_SimpleMotor_LONG::motorA_fw(int speed)
 {
   speed = calculate_speed(speed);
+  this->lastSpeedA = speed;
   // Điều khiển Motor bên TRÁI quay tới
   switch (this->type)
   {
@@ -141,6 +142,7 @@ void Makerlabvn_SimpleMotor_LONG::motorB_fw(int speed)
 {
   // Xử lý giá trị tốc độ nhận được
   speed = calculate_speed(speed);
+  this->lastSpeedB = speed;
   // Điều khiển Motor bên PHẢI quay tới
   switch (this->type)
   {
@@ -175,20 +177,19 @@ void Makerlabvn_SimpleMotor_LONG::motorB_fw(int speed)
  */
 void Makerlabvn_SimpleMotor_LONG::motorA_bw(int speed)
 {
-  // Xử lý giá trị tốc độ nhận được
-  speed = calculate_speed(speed);
-  this->lastSpeedA = -speed;
   // Điều khiển Motor bên TRÁI quay lùi
   switch (this->type)
   {
   case Makerlabvn_SimpleMotor_LONG_Type_L9110:
     if (speed == 100) {
     speed = calculate_speed(speed);
+    this->lastSpeedA = -speed;
     digitalWrite(_pinIn1, LOW);
     analogWrite(_pinIn2, speed); // ~PWM
     }
     else {
       speed = calculate_speed(speed);
+      this->lastSpeedA = -speed;
       digitalWrite(_pinIn2, HIGH);
       analogWrite(_pinIn1, 255 - speed); // ~PWM
     }
@@ -198,6 +199,7 @@ void Makerlabvn_SimpleMotor_LONG::motorA_bw(int speed)
     /* code */
     // Xử lý giá trị tốc độ nhận được
     speed = calculate_speed(speed);
+    this->lastSpeedA = -speed;
     // digitalWrite(this->_pinIn1, 0);
     // digitalWrite(this->_pinIn2, 1);
     digitalWrite(this->_pinIn1, 1);
@@ -208,6 +210,7 @@ void Makerlabvn_SimpleMotor_LONG::motorA_bw(int speed)
   case Makerlabvn_SimpleMotor_LONG_Type_I2C:
    // Xử lý giá trị tốc độ nhận được
     speed = calculate_speed(speed);
+    this->lastSpeedA = -speed;
     i2cMotorDriver->MA(0, speed);
     break;
 
@@ -224,15 +227,13 @@ void Makerlabvn_SimpleMotor_LONG::motorA_bw(int speed)
  */
 void Makerlabvn_SimpleMotor_LONG::motorB_bw(int speed)
 {
-  // Xử lý giá trị tốc độ nhận được
-  speed = calculate_speed(speed);
-  this->lastSpeedB = -speed;
   // Điều khiển Motor bên PHẢI quay lùi
   switch (this->type)
   {
   case Makerlabvn_SimpleMotor_LONG_Type_L9110:
     if (speed == 100) {
     speed = calculate_speed(speed);
+    this->lastSpeedA = -speed;
     digitalWrite(_pinIn4, LOW);
     analogWrite(_pinIn3, speed); // ~PWM
     }
@@ -247,6 +248,7 @@ void Makerlabvn_SimpleMotor_LONG::motorB_bw(int speed)
     /* code */
     // Xử lý giá trị tốc độ nhận được
     speed = calculate_speed(speed);
+    this->lastSpeedA = -speed;
     digitalWrite(this->_pinIn3, 0);
     digitalWrite(this->_pinIn4, 1);
     analogWrite(this->_pinEnB, speed);
@@ -255,6 +257,7 @@ void Makerlabvn_SimpleMotor_LONG::motorB_bw(int speed)
   case Makerlabvn_SimpleMotor_LONG_Type_I2C:
   // Xử lý giá trị tốc độ nhận được
     speed = calculate_speed(speed);
+    this->lastSpeedA = -speed;
     i2cMotorDriver->MB(0, speed);
     break;
 
