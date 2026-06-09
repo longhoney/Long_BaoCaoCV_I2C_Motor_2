@@ -17,7 +17,6 @@
 
 enum{
   Makerlabvn_SimpleMotor_LONG_Type_L298_6Pin,
-  Makerlabvn_SimpleMotor_LONG_Type_MKE_Creator,
   Makerlabvn_SimpleMotor_LONG_Type_L9110,
   Makerlabvn_SimpleMotor_LONG_Type_I2C,
 };

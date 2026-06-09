@@ -90,34 +90,6 @@ void Makerlabvn_SimpleMotor_LONG::setup(
   digitalWrite(_pinEnB, LOW);
 }
 
-void Makerlabvn_SimpleMotor_LONG::setup(
-  uint8_t pinEnA, uint8_t pinIn1, uint8_t pinIn2,
-  uint8_t pinIn3, uint8_t pinIn4, uint8_t pinEnB
-)
-{
-  this->type = Makerlabvn_SimpleMotor_LONG_Type_MKE_Creator;
-  _pinIn1 = pinIn1;
-  _pinIn2 = pinIn2; // ~PWM
-  _pinIn3 = pinIn3; // ~PWM
-  _pinIn4 = pinIn4;
-  this->_pinEnA = pinEnA;
-  this->_pinEnB = pinEnB;
-
-  pinMode(_pinEnA, OUTPUT);
-  pinMode(_pinIn1, OUTPUT);
-  pinMode(_pinIn2, OUTPUT);
-  pinMode(_pinIn3, OUTPUT);
-  pinMode(_pinIn4, OUTPUT);
-  pinMode(_pinEnB, OUTPUT);
-
-  digitalWrite(_pinEnA, LOW);
-  digitalWrite(_pinIn1, LOW);
-  digitalWrite(_pinIn2, LOW);
-  digitalWrite(_pinIn3, LOW);
-  digitalWrite(_pinIn4, LOW);
-  digitalWrite(_pinEnB, LOW);
-}
-
 /* ------------------------------------------------------------------------- */
 /*                            HÀM ĐIỀU KHIỂN MOTOR                           */
 /* ------------------------------------------------------------------------- */
@@ -148,6 +120,7 @@ void Makerlabvn_SimpleMotor_LONG::motorA_fw(int speed)
     digitalWrite(this->_pinIn2, 1);
     analogWrite(this->_pinEnA, speed);
     break;
+  
   case Makerlabvn_SimpleMotor_LONG_Type_I2C:
     i2cMotorDriver->MA(1, speed);
     break;
