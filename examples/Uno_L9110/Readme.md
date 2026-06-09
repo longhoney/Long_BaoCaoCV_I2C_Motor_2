@@ -11,15 +11,20 @@ Không dùng các biến phụ nữa, trả hàm cal_speed về mặc định
 ### 5_L9110_Dung_carfw_50_fail
 Sử dụng tiếp hàm car_fw(50, 50) -> Chương trình bị lỗi không điều khiển được tốc độ
 ### 6_Loi-logic-ham-car_fw
-Phân tích logic hàm car_fw và phát hiện bị dư lệnh cal_speed. Lệnh này đã dùng ở trong hàm motorA_fw() và motorB_fw()
+Phân tích logic hàm car_fw và phát hiện bị dư lệnh cal_speed. Lệnh này đã dùng ở trong hàm motorA_fw() và motorB_fw()  _-> Đưa vào báo cáo 2_
 ### 7_Sua-loi-logic-ham-car_fw-thanh-cong
 Tắt 2 lệnh cal_speed trong hàm car_fw và chương trình điều khiển tốc độ thành công
 ### 8_L9110-car_bw-thanh-cong
 Kiểm tra thêm hàm car_bw(50, 50) thành công
 ### 9_Phan_tich_motor_bw__255-speed
-Kiểm tra hàm car_bw(30, 30) thành công. Phân tích tại sao dùng phép tính 255-speed tại chiều quay ngược chiều kim đồng hồ.
+Kiểm tra hàm car_bw(30, 30) thành công. Phân tích tại sao dùng phép tính 255-speed tại chiều quay ngược chiều kim đồng hồ.  _-> Đưa vào báo cáo 3_
 # Dùng logic analyzer phân tích tín hiệu Uno truyền đi và tín hiệu ngõ ra tại L9110
 ### 10_L9110_carBw_30_OK
 Kiểm tra hàm car_bw(30, 30) thành công. Phép tính 255-speed hoạt động tốt, cần xác định lại ngõ ra. Vì theo lý thuyết, INA có PWM thì OUTA có PWM
 ### 11_L9110_carFw_50_Fail
-Lệnh car_fw(50) chưa hoạt động tốt. Chiều quay đúng nhưng chưa điều khiển được tốc độ.
+Lệnh car_fw(50) chưa hoạt động tốt. Chiều quay đúng nhưng chưa điều khiển được tốc độ.  _-> Đưa vào báo cáo 1_
+
+ Thay đổi cách giao tiếp L9110: dùng thêm if_else -> Giải thích vì sao _-> Đưa vào báo cáo 4_
+- Dùng VOM, than đo thông mạch để xác định lại pinout IC L9110 trên phần cứng có giống với pinout trong datasheet? -> Không giống
+- Kiểm tra phần cứng có hoạt dộng theo bảng chân trị trong datasheet không? -> THay đổi 1 trường hợp, 3 trường hợp còn lại giống datasheet
+- Đã chú thích trong images/L9110_pinout_wiring-diagram

@@ -12,9 +12,7 @@
 // #define PIN_IN4 11 //! D11 (~) --> B-IB
 
 
-
-// Định nghĩa chân cho MKE-Creator // KHONOG THAY DOI TOC DO DUOC
-// Định nghĩa chân cho L298
+// Định nghĩa chân cho L298 và MKE-Creator
 #define PIN_ENA 6 //! D6 (~)
 #define PIN_IN1 8 
 #define PIN_IN2 9 
@@ -89,8 +87,8 @@ void loop() {
         break;
       case '6':
         // digitalWrite(5, HIGH);
-        Serial.println("Điều khiển động cơ kênh B - Quay thuận 50%");
-        d9110.motorB_fw(50);
+        Serial.println("Điều khiển động cơ kênh B - Quay thuận 30%");
+        d9110.motorB_fw(30);
         d9110.motorA_stop();
         break;
       case '7':
@@ -101,8 +99,8 @@ void loop() {
         break;
       case '8':
         // digitalWrite(6, HIGH);
-        Serial.println("Điều khiển động cơ kênh B - Quay ngược 50%");
-        d9110.motorB_bw(50);
+        Serial.println("Điều khiển động cơ kênh B - Quay ngược 60%");
+        d9110.motorB_bw(60);
         d9110.motorA_stop();
         break;
       default:
