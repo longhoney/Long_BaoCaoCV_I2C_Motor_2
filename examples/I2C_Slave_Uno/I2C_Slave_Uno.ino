@@ -18,7 +18,8 @@
 */
 
 // Định nghĩa I2C Constants
-const uint8_t AGR12_I2C_ADDRESS = 0x50; // Địa chỉ I2C 7-bit (từ 0xA0/0xA1)
+const uint8_t master_address = 0x50;
+// const uint8_t AGR12_I2C_ADDRESS = 0x50; // Địa chỉ I2C 7-bit (từ 0xA0/0xA1)
 const uint8_t CMD_MEASURE_HIGH = 0xAC; // Byte lệnh 1 [8]
 const uint8_t CMD_MEASURE_LOW = 0x12;  // Byte lệnh 2 [8]
 const int WAIT_TIME_MS = 80;           // Thời gian chờ sau khi gửi lệnh đo (ms) [8]
@@ -40,6 +41,25 @@ void loop() {
 
 bool readData() {
   // Bước 1: Yêu cầu đọc 6 bytes từ master
+  uint8_t tempCount = Wire.requestFrom(master_address, 6);
+  Serial.println("count: " + String(tempCount));
+  if (tempCount == 6) {
+    uint8_t _addressId = Wire.read();   // Byte giá trị địa chỉ của slave
+    uint8_t _modeId = Wire.read();    // Byte chế độ điều khiển: DC Motor hay RC Servo
+    uint8_t _index = Wire.read();   // Byte quy định kênh sẽ điều khiển: A hoặc B
+    uint8_t _pwm = Wire.read();   // Byte giá trị tốc độ PWM 0-255
+    uint8_t _dir = Wire.read();   // Byte quy định chiều quay
+    uint8_t _crc = Wire.read();   // Byte giá trị checksum
+  }
+  // Bước 2: Tính toán và kiểm tra CRC
+  // Bước 3: Phân tích nội dung Master gửi để thực hiện lệnh
+    // - Index: Điều khiển motorA hay motorB
+    // - dir: 1 = quay thuan -> motorA_fw hoặc motorB_fw
+    // - PWM: kiểm tra nằm trong 0-255? OK thì đưa vào biến speed của hàm motorA_fw hoặc motorB_fw
+  // Bước 4: Điều khiển động cơ theo lệnh của Master
+  // Bước 5: Hiển thị kết quả
+    // - Nhận được frame này
+    // - Động cơ A/B quay thuận/nghịch tốc độ xx%
 }
 /*bool readPressure() {
   // BƯỚC 1: Gửi lệnh đo lường (0xAC 0x12) [8]
