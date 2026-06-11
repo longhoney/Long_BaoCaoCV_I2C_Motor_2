@@ -114,10 +114,10 @@ void Makerlabvn_SimpleMotor_LONG::motorA_fw(int speed)
     break;
   case Makerlabvn_SimpleMotor_LONG_Type_L298_6Pin:
     /* code */
-    // digitalWrite(this->_pinIn1, 1);
-    // digitalWrite(this->_pinIn2, 0);
-    digitalWrite(this->_pinIn1, 0);
-    digitalWrite(this->_pinIn2, 1);
+    digitalWrite(this->_pinIn1, 1);
+    digitalWrite(this->_pinIn2, 0);
+    // digitalWrite(this->_pinIn1, 0);
+    // digitalWrite(this->_pinIn2, 1);
     analogWrite(this->_pinEnA, speed);
     break;
   
@@ -200,10 +200,10 @@ void Makerlabvn_SimpleMotor_LONG::motorA_bw(int speed)
     // Xử lý giá trị tốc độ nhận được
     speed = calculate_speed(speed);
     this->lastSpeedA = -speed;
-    // digitalWrite(this->_pinIn1, 0);
-    // digitalWrite(this->_pinIn2, 1);
-    digitalWrite(this->_pinIn1, 1);
-    digitalWrite(this->_pinIn2, 0);
+    digitalWrite(this->_pinIn1, 0);
+    digitalWrite(this->_pinIn2, 1);
+    // digitalWrite(this->_pinIn1, 1);
+    // digitalWrite(this->_pinIn2, 0);
     analogWrite(this->_pinEnA, speed);
     break;
   
@@ -251,7 +251,7 @@ void Makerlabvn_SimpleMotor_LONG::motorB_bw(int speed)
     this->lastSpeedA = -speed;
     digitalWrite(this->_pinIn3, 0);
     digitalWrite(this->_pinIn4, 1);
-    analogWrite(this->_pinEnB, speed);
+    analogWrite(this->_pinEnB, 255 - speed);
     break;
   
   case Makerlabvn_SimpleMotor_LONG_Type_I2C:

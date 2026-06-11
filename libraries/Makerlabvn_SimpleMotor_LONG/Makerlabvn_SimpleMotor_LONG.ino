@@ -34,8 +34,8 @@ void setup() {
   Serial.println("Start Test, input from 0 (OFF) to 8");
   Serial.println("Baud 115200, No line ending");
   // d9110.setup(PIN_IN1, PIN_IN2, PIN_IN3, PIN_IN4); //4pin
-  // d9110.setup(PIN_ENA, PIN_IN1, PIN_IN2, PIN_IN3, PIN_IN4, PIN_ENB); //6pin
-  cr9110.setup(PIN_ENA, PIN_IN1, PIN_IN2, PIN_IN3, PIN_IN4, PIN_ENB); //6pin
+  d9110.setup(PIN_ENA, PIN_IN1, PIN_IN2, PIN_IN3, PIN_IN4, PIN_ENB); //6pin
+  // cr9110.setup(PIN_ENA, PIN_IN1, PIN_IN2, PIN_IN3, PIN_IN4, PIN_ENB); //6pin
   // d9110.setup(64); // For I2C
 }
 
@@ -84,7 +84,7 @@ void loop() {
         speed = 60;
         d9110.motorA_bw(speed);
         d9110.motorB_stop();
-        cr9110.motorA_fw(speed);
+        cr9110.motorA_fw(100-speed);
         cr9110.motorB_stop();
         break;
       case '5':
@@ -98,21 +98,21 @@ void loop() {
         // digitalWrite(5, HIGH);
         Serial.println("Điều khiển động cơ kênh B - Quay thuận 30%");
         speed = 30;
-        d9110.motorB_fw(30);
+        d9110.motorB_fw(speed);
         d9110.motorA_stop();
         break;
       case '7':
         // digitalWrite(6, HIGH);
         Serial.println("Điều khiển động cơ kênh B - Quay ngược 100%");
         speed = 100;
-        d9110.motorB_bw(100);
+        d9110.motorB_bw(speed);
         d9110.motorA_stop();
         break;
       case '8':
         // digitalWrite(6, HIGH);
         Serial.println("Điều khiển động cơ kênh B - Quay ngược 60%");
         speed = 60;
-        d9110.motorB_bw(60);
+        d9110.motorB_bw(speed);
         d9110.motorA_stop();
         break;
       default:
