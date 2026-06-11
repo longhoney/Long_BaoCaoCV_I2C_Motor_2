@@ -37,7 +37,7 @@ Makerlabvn_SimpleMotor demo;
 
 void setup() {
   Serial.begin(115200);
-  Wire.begin(0x40); // Khởi tạo I2C bus
+  Wire.begin(64); // Khởi tạo I2C bus
   demo.setup(PIN_ENA, PIN_IN1, PIN_IN2, PIN_IN3, PIN_IN4, PIN_ENB);
   Serial.println("Khoi tao Slave MKE Creator...");
 }
@@ -48,7 +48,7 @@ void loop() {
   } else {
     Serial.println("Loi doc du lieu tu Master.");
   }
-  delay(1000); // Đọc mỗi 100 mili giây
+  delay(100); // Đọc mỗi 100 mili giây
 }
 
 bool readData() {
