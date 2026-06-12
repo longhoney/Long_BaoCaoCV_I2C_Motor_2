@@ -89,13 +89,13 @@ void receiveEvent(uint8_t tempCount) {
     Serial.print("Động cơ A quay thuận, tốc độ: "); Serial.print(speedPercent); Serial.println("%");
     demo.motorA_fw(speedPercent);
   } else if (_modeId == 1 && _index == 0 && _dir == 0) {
-    Serial.println("Động cơ A quay nghịch, tốc độ: " + String(speedPercent) + "%");
+    Serial.print("Động cơ A quay nghịch, tốc độ: "); Serial.print(speedPercent); Serial.println("%");
     demo.motorA_bw(speedPercent);
   } else if (_modeId == 1 && _index == 1 && _dir == 1) {
-    Serial.println("Động cơ B quay thuận, tốc độ: " + String(speedPercent) + "%");
+    Serial.print("Động cơ B quay thuận, tốc độ: "); Serial.print(speedPercent); Serial.println("%");
     demo.motorB_fw(speedPercent);
   } else if (_modeId == 1 && _index == 1 && _dir == 0) {
-    Serial.println("Động cơ B quay nghịch, tốc độ: " + String(speedPercent) + "%");
+    Serial.print("Động cơ B quay nghịch, tốc độ: "); Serial.print(speedPercent); Serial.println("%");
     demo.motorB_bw(speedPercent);
   }
 }

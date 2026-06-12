@@ -251,7 +251,7 @@ void Makerlabvn_SimpleMotor_LONG::motorB_bw(int speed)
     this->lastSpeedA = -speed;
     digitalWrite(this->_pinIn3, 0);
     digitalWrite(this->_pinIn4, 1);
-    analogWrite(this->_pinEnB, 255 - speed);
+    analogWrite(this->_pinEnB, speed);
     break;
   
   case Makerlabvn_SimpleMotor_LONG_Type_I2C:
