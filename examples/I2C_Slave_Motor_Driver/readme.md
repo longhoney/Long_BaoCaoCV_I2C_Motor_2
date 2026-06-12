@@ -21,3 +21,6 @@ _Slave nên khai báo biến dạng cấu trúc như của master_
 
 - Đã Phân tích thư viện Makerlabvn_SimpleMotor trong Google Sheet [Phân tích thư viện](https://docs.google.com/spreadsheets/d/1pauv_eXI9WxPK2DNi59jDcf7WH-pYOTJTPTRPNfatLw/edit?usp=sharing)
 - Đã phân tích thư viện Makerlabvn_I2C_Motor_Drive trong [Issue 10](https://github.com/Khuuxuanngoc/Long_BaoCaoCongViec_I2C_Motor/issues/10)
+
+# Ghi chú các bước trong lúc soạn thư viện
+1. Thư viện slave này sẽ tương tự như Makerlabvn_SimpleMotor và bổ sung thêm phần giao tiếp I2C
