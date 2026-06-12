@@ -16,3 +16,4 @@ Tiếp tục dự án từ ngày 7/6/2026
     - MKE Creator V1 không nối 2 chân PWM cho mỗi kênh L9110
     - Xem tại sheet "MKE-Creator"
 7. Lựa chọn chương trình Slave phù hợp với chương trình Master của thư viện MKL_I2C_Motor_Driver
+8. Viết thư viện I2C Slave dựa theo nội dung của chương trình Slave, tham khảo cấu trúc thư viện của Makerlabvn_SimpleMotor và Makerlabvn_I2C_Motor_Driver
