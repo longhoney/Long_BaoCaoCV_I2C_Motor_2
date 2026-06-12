@@ -40,6 +40,14 @@ protected:
   int kxnSpeedA, kxnSpeedB;
   int lastSpeedA, lastSpeedB;
   Makerlabvn_I2C_Motor_Driver *i2cMotorDriver;
+
+  /* --------------------------- (HÀM) ĐẶT TỐC ĐỘ -------------------------- */
+
+  /**
+   * Đảm bảo giá trị tốc độ (%) nhận được trong khoảng 0% đến 100%
+   * Đồng thời chuyển đổi tốc độ (%) sang thang (PWM) tương ứng
+   */
+  int calculate_speed(int speed);
 public:
   /* ------------------------------- HÀM TẠO ------------------------------- */
   Makerlabvn_SimpleMotor_LONG(){}
@@ -95,7 +103,7 @@ public:
 
   void loop();
 
-protected:
+private:
   /* ----------------------- (BIẾN) CẤU HÌNH CÁC PIN ----------------------- */
   uint8_t _pinIn1;
   uint8_t _pinIn2;
@@ -104,13 +112,6 @@ protected:
   uint8_t _pinEnA;
   uint8_t _pinEnB;
 
-  /* --------------------------- (HÀM) ĐẶT TỐC ĐỘ -------------------------- */
-
-  /**
-   * Đảm bảo giá trị tốc độ (%) nhận được trong khoảng 0% đến 100%
-   * Đồng thời chuyển đổi tốc độ (%) sang thang (PWM) tương ứng
-   */
-  int calculate_speed(int speed);
 };
 
 /* ------------------------------------------------------------------------- */
