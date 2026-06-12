@@ -1,5 +1,5 @@
 #include <Wire.h>
-#include "Makerlabvn_SimpleMotor_LONG.h"
+#include "Makerlabvn_SimpleMotor.h"
 
 /* ------------------------------------------------------------------------- */
 /*                                   DEFINE                                  */
@@ -22,11 +22,11 @@ uint8_t _dir = 0;   // Byte quy định chiều quay
 uint8_t _crc = 0;   // Byte giá trị checksum
 uint8_t calculated_crc = 0;
 // Khai bao bien luu toc do dang 0-100%
-uint8_t speedPercent = 0;
+int speedPercent = 0;
 /* ------------------------------------------------------------------------- */
 /*                                   OBJECT                                  */
 /* ------------------------------------------------------------------------- */
-Makerlabvn_SimpleMotor_LONG demo;
+Makerlabvn_SimpleMotor demo;
 
 
 void setup() {
