@@ -37,6 +37,8 @@ class I2C_Slave_Motor_Driver : public Makerlabvn_SimpleMotor_LONG
       void receiveEvent(uint8_t tempCount);
       void motor_ctrl();
       void printData();
+      void check_crc();
+      void cal_speed(uint8_t speedPWM);
   private:
     /* ----------------------- (BIẾN) CẤU HÌNH CÁC PIN ----------------------- */
     uint8_t _pinIn1;
@@ -54,10 +56,13 @@ class I2C_Slave_Motor_Driver : public Makerlabvn_SimpleMotor_LONG
       uint8_t _index;
       uint8_t _pwm; // pwm
       uint8_t _dir; // dir
-      uint8_t _checkSum;
+      uint8_t _crc;
     } ;
 
     SerialDataDcMotor motorData;
+
+    int speedPercent;
+    uint8_t calculated_crc;
 };
 
 #endif
