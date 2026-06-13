@@ -15,12 +15,27 @@
 /*                            HÀM CỦA I2C SLAVE                              */
 /* ------------------------------------------------------------------------- */
 
-void I2C_Slave_Motor_Driver::I2C_setup() {
-  Wire.begin(64); // Khởi tạo I2C bus
-  Wire.onReceive(receiveEvent); // register event
+// Khai báo instance
+I2C_Slave_Motor_Driver* I2C_Slave_Motor_Driver::instance = nullptr;
+
+I2C_Slave_Motor_Driver::I2C_Slave_Motor_Driver() {
+    instance = this;
 }
 
-void I2C_Slave_Motor_Driver::receiveEvent(uint8_t tempCount) {
+void I2C_Slave_Motor_Driver::I2C_setup() {
+  Wire.begin(64); // Khởi tạo I2C bus
+  Wire.onReceive(I2C_Slave_Motor_Driver::receiveEvent); // register event
+}
+
+void I2C_Slave_Motor_Driver::receiveEvent(int tempCount)
+{
+    if(instance != nullptr)
+    {
+        instance->receiveEventInternal(tempCount);
+    }
+}
+
+void I2C_Slave_Motor_Driver::receiveEventInternal(int tempCount) {
   Serial.println("count: " + String(tempCount));
   if (tempCount == 6) {
     motorData._addressId = Wire.read();   // Byte giá trị địa chỉ của slave

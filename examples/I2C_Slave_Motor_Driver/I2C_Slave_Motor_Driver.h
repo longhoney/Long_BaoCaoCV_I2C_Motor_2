@@ -34,11 +34,15 @@ class I2C_Slave_Motor_Driver : public Makerlabvn_SimpleMotor_LONG
     
     // Các hàm mới của thư viện I2C_Slave_Motor_Driver
       void I2C_setup();
-      void receiveEvent(uint8_t tempCount);
       void motor_ctrl();
       void printData();
       void check_crc();
       void cal_speed(uint8_t speedPWM);
+      void receiveEventInternal(int tempCount);
+      static void receiveEvent(int tempCount);
+    
+    // Thêm constructor để gán instance = this; vì đã khai báo trong private: static I2C_Slave_Motor_Driver* instance;
+      I2C_Slave_Motor_Driver();
   private:
     /* ----------------------- (BIẾN) CẤU HÌNH CÁC PIN ----------------------- */
     uint8_t _pinIn1;
@@ -61,8 +65,10 @@ class I2C_Slave_Motor_Driver : public Makerlabvn_SimpleMotor_LONG
 
     SerialDataDcMotor motorData;
 
-    int speedPercent;
-    uint8_t calculated_crc;
+    int speedPercent = 0;
+    uint8_t calculated_crc = 0;
+
+    static I2C_Slave_Motor_Driver* instance;
 };
 
 #endif
