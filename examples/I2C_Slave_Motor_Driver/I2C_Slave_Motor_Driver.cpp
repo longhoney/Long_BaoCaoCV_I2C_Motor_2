@@ -60,7 +60,8 @@ void I2C_Slave_Motor_Driver::receiveEventInternal(int tempCount) {
 
   } else {
     Serial.println("Chi nhan duoc: " + String(tempCount) + " byte" + "(yeu cau 6 byte).");
-    return false;
+    // return false;
+    return; 
   }
 }
 
@@ -94,6 +95,15 @@ void I2C_Slave_Motor_Driver::check_crc() {
                    motorData._index +
                    motorData._pwm +
                    motorData._dir;
+
+  if (calculated_crc != _crc) {
+    Serial.print("Loi CRC! Du lieu khong hop le. CRC nhan: ");
+    Serial.print(_crc, HEX);
+    Serial.print(", CRC tinh: ");
+    Serial.println(calculated_crc, HEX);
+    // return false;
+    return;
+  }
 }
 
 void I2C_Slave_Motor_Driver::printData() {
