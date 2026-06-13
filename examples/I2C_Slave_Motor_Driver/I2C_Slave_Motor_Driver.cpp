@@ -96,9 +96,9 @@ void I2C_Slave_Motor_Driver::check_crc() {
                    motorData._pwm +
                    motorData._dir;
 
-  if (calculated_crc != _crc) {
+  if (calculated_crc != motorData._crc) {
     Serial.print("Loi CRC! Du lieu khong hop le. CRC nhan: ");
-    Serial.print(_crc, HEX);
+    Serial.print(motorData._crc, HEX);
     Serial.print(", CRC tinh: ");
     Serial.println(calculated_crc, HEX);
     // return false;
